@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="costloupe-app-arch" name="Costloupe App architecture">
+    <mxGraphModel dx="900" dy="600" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="520" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="browser" value="web browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="40" width="760" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="frontZone" value="Frontend - React" style="rounded=1;dashed=1;fillColor=none;strokeColor=#9673a6;verticalAlign=top;fontStyle=2;fontColor=#666666" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="230" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="backZone" value="Backend - FastAPI" style="rounded=1;dashed=1;fillColor=none;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=2;fontColor=#666666" vertex="1" parent="1">
+          <mxGeometry x="360" y="140" width="540" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="wizard" value="wizard&#10;(questionnaire)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="110" y="190" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="result" value="result view&#10;(designs list)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="110" y="350" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="routes" value="API routes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="400" y="190" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="engine" value="engine&#10;(rules + cost)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6" vertex="1" parent="1">
+          <mxGeometry x="650" y="190" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pricing" value="pricing&#10;(rate data)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00" vertex="1" parent="1">
+          <mxGeometry x="650" y="350" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL&#10;(projects)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="400" y="350" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" style="endArrow=block;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" source="browser" target="wizard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="questions" style="endArrow=block;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0" edge="1" parent="1" source="routes" target="wizard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="answers + name" style="endArrow=block;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0" edge="1" parent="1" source="wizard" target="routes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="answers" style="endArrow=block;html=1;exitX=1;exitY=0.35;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0" edge="1" parent="1" source="routes" target="engine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="recommendation" style="endArrow=block;html=1;exitX=0;exitY=0.65;exitDx=0;exitDy=0;entryX=1;entryY=0.65;entryDx=0;entryDy=0" edge="1" parent="1" source="engine" target="routes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="reads rates" style="endArrow=block;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" source="engine" target="pricing">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="stores project" style="endArrow=block;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" source="routes" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="recommendation" style="endArrow=block;html=1;exitX=0;exitY=0.9;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0" edge="1" parent="1" source="routes" target="result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

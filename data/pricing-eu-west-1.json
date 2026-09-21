@@ -1,0 +1,78 @@
+{
+  "source": "AWS Price List Query API (aws pricing get-products)",
+  "region": "eu-west-1",
+  "currency": "USD",
+  "fetched_at": "2026-09-13",
+  "assumptions": [
+    "On-Demand pricing",
+    "Linux, x86 architecture (no ARM/Graviton)",
+    "Standard product variants only (no Edge, SnapStart, Provisioned Concurrency, MicroVM, Managed Instances, Windows)",
+    "First pricing tier, the marginal rate before volume discounts",
+    "DynamoDB Standard table class, single region and non-replicated, live storage only",
+    "CloudFront egress priced by edge location; the Europe price class is used",
+    "Other regions differ in price; eu-west-1 is fixed for the prototype"
+  ],
+  "ec2_hour": {
+    "t3.micro": 0.0114,
+    "t3.small": 0.0228,
+    "t3.medium": 0.0456,
+    "t3.large": 0.0912,
+    "m5.large": 0.1070
+  },
+  "fargate": {
+    "vcpu_hour": 0.04048,
+    "gb_hour": 0.004445
+  },
+  "eks": {
+    "cluster_hour": 0.10
+  },
+  "lambda": {
+    "request": 0.0000002,
+    "gb_second": 0.0000166667
+  },
+  "rds_hour": {
+    "single_az": {
+      "db.t3.micro": 0.020,
+      "db.t3.small": 0.039,
+      "db.t3.medium": 0.078
+    },
+    "multi_az": {
+      "db.t3.micro": 0.039,
+      "db.t3.small": 0.078,
+      "db.t3.medium": 0.156
+    }
+  },
+  "rds_gp3_gb_month": {
+    "single_az": 0.127,
+    "multi_az": 0.254
+  },
+  "dynamodb": {
+    "on_demand_read_per_million": 0.1415,
+    "on_demand_write_per_million": 0.705,
+    "provisioned_rcu_hour": 0.000147,
+    "provisioned_wcu_hour": 0.000735,
+    "storage_gb_month": 0.283
+  },
+  "ebs_gp3_gb_month": 0.088,
+  "s3_standard": {
+    "gb_month": 0.023,
+    "put_per_1000": 0.005,
+    "get_per_1000": 0.0004
+  },
+  "alb": {
+    "hour": 0.0252,
+    "lcu_hour": 0.008
+  },
+  "nat_gateway": {
+    "hour": 0.048,
+    "gb_processed": 0.048
+  },
+  "api_gateway": {
+    "rest_per_million": 3.50,
+    "http_per_million": 1.11
+  },
+  "cloudfront": {
+    "data_out_gb": 0.085,
+    "https_per_10000": 0.012
+  }
+}
